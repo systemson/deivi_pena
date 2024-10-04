@@ -18,11 +18,11 @@ En esta prueba deberás implementar la integración de dos sistemas de pago fict
   - Request Body:
     ```json
     {
-      "amount": <monto>,
+      "amount": "<monto>",
       "currency": "<moneda>"
     }
     ```
-- Lamentablemente el sistema de pago EasyMoney no puede procesar datos decimales, en ese caso nos devolverá un error que debemos manejar.
+- Lamentablemente el sistema de pago EasyMoney no puede procesar datos decimales, en ese caso nos devolverá un error que debemos manejar. Igualmente, maneja todos los casos de error que puedan ocurrir.
 
 #### 2. Pago SuperWalletz
 
@@ -33,7 +33,7 @@ En esta prueba deberás implementar la integración de dos sistemas de pago fict
   - Request Body:
     ```json
     {
-      "amount": <monto>,
+      "amount": "<monto>",
       "currency": "<moneda>",
       "callback_url": "<tu_url_para_confirmacion>"
     }
@@ -45,8 +45,14 @@ En esta prueba deberás implementar la integración de dos sistemas de pago fict
 ### Consideraciones Adicionales
 
 - Se deben guardar todas las transacciones y su estado en la base de datos, independientemente de si fueron exitosas o no.
-- También debemos guardar todas las requests realizadas a la plataforma de pago, y también los webhooks que recibimos, para su posterior análisis por parte del equipo de BI.
-- En la carpeta `PAY-SERVERS` se encuentran los archivos de los servidores de pago ficticios que simulan los sistemas de pago. En los propios archivos se explican las instrucciones de instalación.
+- También debemos guardar todas las requests/peticiones realizadas a la plataforma de pago, y también los webhooks que recibimos, para su posterior análisis por parte del equipo de BI.
+- En la carpeta `/PAY-SERVERS` se encuentra un archivo `easy-money.js` y un archivo `super-walletz.js` que son simuladores de los servidores de pago. No debes modificarlos. Para que funcionen correctamente, debes ejecutar los siguientes comandos:
+
+```bash
+npm install
+node easy-money.js # Ejecuta el servidor de Pago EasyMoney
+node super-walletz.js # Ejecuta el servidor de Pago SuperWalletz
+```
 
 ¡Buena suerte!
 

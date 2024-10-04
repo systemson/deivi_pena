@@ -26,13 +26,3 @@ app.listen(PORT, () => {
     console.log(`Servidor de pago EasyMoney ejecutándose en el puerto ${PORT}`);
 });
 
-/**
- * Instrucciones de Instalación:
- *
- * 1. Inicializa un proyecto Node.js y instala las dependencias necesarias:
- *    npm init -y
- *    npm install express axios
- *
- * 2. Ejecuta el servidor:
- *    node easy-money.js
- */
