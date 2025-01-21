@@ -14,5 +14,6 @@ class Transaccion extends Model
     protected $fillable = [
         'amount',
         'currency',
+        'status',
     ];
 }

@@ -26,14 +26,26 @@ class SuperWalletzController extends Controller
         $response = Http::post("http://localhost:3000/process", $validatedData);
 
         if ($response->successful()) {
+
+            $transaccion->status = 'success';
+            $transaccion->save();
             return response([
                 'message' => 'success',
                 'tx_id' => $response->json()['transaction_id'],
             ]);
         }
 
+
+        $transaccion->status = 'failed';
+        $transaccion->save();
         return $response->json();
     }
 
-    public function callback(Request $request) {}
+    public function callback(Request $request)
+    {
+        return response([
+            'message' => "success",
+            'tx_id' => $request->get('transaction_id'),
+        ]);
+    }
 }

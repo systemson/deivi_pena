@@ -23,10 +23,16 @@ class EasyMoneyController extends Controller
         $response = Http::post("http://localhost:3000/process", $validatedData);
 
         if ($response->successful()) {
+
+            $transaccion->status = 'success';
+            $transaccion->save();
             return response([
                 'message' => 'Transaccion recibida satisfactoriamente',
             ]);
         }
+
+        $transaccion->status = 'failed';
+        $transaccion->save();
 
         return $response->json();
     }
